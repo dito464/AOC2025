@@ -1,4 +1,7 @@
-﻿using Day1;
+﻿using System.Diagnostics;
+using Day1;
+
+var sw = Stopwatch.StartNew();
 
 string[] lines = Input.INPUT.Split("\r\n");
 
@@ -6,11 +9,12 @@ const int start = 50;
 int pos = start;
 int prev = pos;
 int count = 0;
-int pt2count = 0; ;
+int pt2count = 0;
+
 foreach (var line in lines)
 {
     int number = int.Parse(line.Substring(1));
-    
+
     if (line[0] == 'R')
     {
         pos += number;
@@ -18,7 +22,6 @@ foreach (var line in lines)
         {
             pos -= 100;
             pt2count++;
-            
         }
     }
     else if (line[0] == 'L')
@@ -33,7 +36,7 @@ foreach (var line in lines)
             }
             else
             {
-                prev = 1; 
+                prev = 1;
             }
         }
     }
@@ -53,5 +56,7 @@ foreach (var line in lines)
     prev = pos;
 }
 
+sw.Stop();
 Console.WriteLine(count.ToString());
 Console.WriteLine(pt2count.ToString());
+Console.WriteLine($"Total time taken {sw.ElapsedMilliseconds}");

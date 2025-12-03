@@ -1,5 +1,7 @@
 ﻿using Day2;
+using System.Diagnostics;
 
+var sw = Stopwatch.StartNew();
 string[] IdPairs = Input.INPUT.Split(',');
 ulong count = 0;
 ulong count2 = 0;
@@ -64,6 +66,7 @@ foreach (string idPair in IdPairs)
         }
     }
 }
-
+sw.Stop();
 Console.WriteLine(count);
 Console.WriteLine(count2);
+Console.WriteLine($"Total time taken : {sw.ElapsedMilliseconds}");
